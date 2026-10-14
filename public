@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Secure Web App</title>
+  </head>
+  <body>
+    <h1>Secure Web Application</h1>
+    <p>Server is running securely.</p>
+  </body>
+</html>
