@@ -1,12 +1,12 @@
 {
   "name": "secure-web-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web application built with Node.js and Express that follows security best practices.",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
+  "start": "node src/server.js",
+  "dev": "nodemon src/server.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,13 +14,24 @@
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
-    "dotenv": "^18.0.7",
+    "dotenv": "^18.0.8",
     "express": "^5.3.0",
     "express-rate-limit": "^8.7.1",
     "express-validator": "^7.3.2",
-    "helmet": "^8.3.0"
+    "helmet": "^8.3.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.12.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratiksha0604/secure-web-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pratiksha0604/secure-web-app/issues"
+  },
+  "homepage": "https://github.com/pratiksha0604/secure-web-app#readme"
 }

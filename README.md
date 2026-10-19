@@ -1,35 +1,41 @@
 # Secure Web Application
 
-A web application built with Node.js and Express that follows security best practices.
+A Node.js and Express app built following security best practices.
 
-## Features
-- **Helmet**: sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)
-- **Rate limiting**: 100 requests per 15 minutes per IP to slow brute-force attacks
-- **CORS**: restricts which origins can call the API
-- **Input validation**: express-validator checks email and password
-- **Password hashing**: bcrypt with 12 salt rounds, so no plain-text passwords
-- **Payload limit**: JSON bodies are capped at 10kb
-- **Safe error handling**: internal errors are logged, and clients only see a generic message
-- **Environment variables**: secrets stay in `.env`, which is never committed
+## Features and security measures
+- Helmet for secure HTTP headers
+- Rate limiting (100 requests per 15 minutes)
+- Input validation and sanitization (express-validator)
+- Password hashing with bcrypt
+- JWT authentication with 1-hour expiry
+- HPP against parameter pollution
+- Request body size limit (10kb)
+- Secrets stored in environment variables, never committed
+- Central error handler that never leaks stack traces
+- Request logging with morgan
 
 ## Setup
-1. Clone the repository
-2. Run `npm install`
-3. Copy `.env.example` to `.env` and fill in the values
-4. Run `npm run dev` (development) or `npm start` (production)
+```bash
+npm install
+cp .env.example .env   # then fill in JWT_SECRET
+npm start
+```
 
-## Endpoints
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | /health | Health check |
-| POST | /register | Register a user (validated, password hashed) |
+## API endpoints
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | /api/auth/register | Register a user |
+| POST | /api/auth/login | Log in and receive a JWT |
+| GET | /api/auth/profile | Protected route (needs a token) |
 
-## Security Testing
-- `npm audit` for dependency vulnerabilities
-- Header check for Helmet protections
-- XSS and injection attempts rejected by validation
-- Oversized payloads rejected (413)
-- Rate limiting verified
+## Vulnerability testing
+- `npm audit`: 0 vulnerabilities
+- Security headers verified with curl
+- Invalid input, XSS and SQL injection payloads rejected (HTTP 400)
+- Protected route blocks missing or fake tokens (HTTP 401)
+- Rate limiting verified (HTTP 429)
 
-## Tech Stack
-Node.js, Express, Helmet, express-rate-limit, express-validator, bcryptjs, dotenv
+Screenshots are in the `screenshots/` folder.
+
+## Deployment
+Live URL: (add after 4.9)
